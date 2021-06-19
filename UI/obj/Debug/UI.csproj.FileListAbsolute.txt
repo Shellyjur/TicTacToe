@@ -1,0 +1,4 @@
+C:\Users\zurbinsky\source\repos\TicTacToe\UI\obj\Debug\UI.csprojAssemblyReference.cache
+C:\Users\zurbinsky\source\repos\TicTacToe\UI\obj\Debug\UI.GameSettings.resources
+C:\Users\zurbinsky\source\repos\TicTacToe\UI\obj\Debug\UI.csproj.GenerateResource.cache
+C:\Users\zurbinsky\source\repos\TicTacToe\UI\obj\Debug\UI.csproj.CoreCompileInputs.cache
