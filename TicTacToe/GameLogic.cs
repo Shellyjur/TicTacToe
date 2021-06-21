@@ -144,7 +144,7 @@ namespace TicTacToe
 
         public string PrintForward(string i_Name1, string i_Name2, ePrintReason i_Reason)
         {
-            return GameUI.GetInput(i_Name1, i_Name2, i_Reason);
+            return ""; //GameUI.GetInput(i_Name1, i_Name2, i_Reason);
         }
 
         public bool ComputerInputXO(char[,] i_GameMatrix, int i_Size, Player i_ComputerPlayer, Player i_HumanPlayer)

@@ -11,3 +11,16 @@ C:\Users\zurbinsky\source\repos\TicTacToe\GameUI\obj\Debug\GameUI.GameSettings.r
 C:\Users\zurbinsky\source\repos\TicTacToe\GameUI\bin\Debug\TicTacToe.dll
 C:\Users\zurbinsky\source\repos\TicTacToe\GameUI\bin\Debug\TicTacToe.pdb
 C:\Users\zurbinsky\source\repos\TicTacToe\GameUI\obj\Debug\GameUI.csproj.CopyComplete
+C:\Users\97254\GitProjects\TicTacToeUI\GameUI\obj\Debug\GameUI.csprojAssemblyReference.cache
+C:\Users\97254\GitProjects\TicTacToeUI\GameUI\obj\Debug\GameUI.Board.resources
+C:\Users\97254\GitProjects\TicTacToeUI\GameUI\obj\Debug\GameUI.GameSettings.resources
+C:\Users\97254\GitProjects\TicTacToeUI\GameUI\obj\Debug\GameUI.Properties.Resources.resources
+C:\Users\97254\GitProjects\TicTacToeUI\GameUI\obj\Debug\GameUI.csproj.GenerateResource.cache
+C:\Users\97254\GitProjects\TicTacToeUI\GameUI\obj\Debug\GameUI.csproj.CoreCompileInputs.cache
+C:\Users\97254\GitProjects\TicTacToeUI\GameUI\obj\Debug\GameUI.exe
+C:\Users\97254\GitProjects\TicTacToeUI\GameUI\obj\Debug\GameUI.pdb
+C:\Users\97254\GitProjects\TicTacToeUI\GameUI\bin\Debug\GameUI.exe
+C:\Users\97254\GitProjects\TicTacToeUI\GameUI\bin\Debug\GameUI.pdb
+C:\Users\97254\GitProjects\TicTacToeUI\GameUI\bin\Debug\TicTacToe.dll
+C:\Users\97254\GitProjects\TicTacToeUI\GameUI\bin\Debug\TicTacToe.pdb
+C:\Users\97254\GitProjects\TicTacToeUI\GameUI\obj\Debug\GameUI.csproj.CopyComplete

@@ -37,7 +37,10 @@ namespace GameUI
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-
+            if (player2CB.Checked)
+            {
+                player2NameTB.Enabled = true;
+            }
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -62,7 +65,15 @@ namespace GameUI
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (player2CB.Checked)
+            {
+                player2NameTB.Enabled = true;
+            }
+            else
+            {
+                player2NameTB.Enabled = false;
+                player2NameTB.Text = "[Computer]";
+            }
         }
 
         private void StartButton_Click(object sender, EventArgs e)
@@ -71,16 +82,17 @@ namespace GameUI
 
             if (player2CB.Checked)
             {
-               boardGame = new Board((int)nUDRows.Value, player1NameTB.Text, player2NameTB.Text);
+                boardGame = new Board((int) nUDRows.Value, player1NameTB.Text, player2NameTB.Text);
             }
             else
             {
-               boardGame = new Board((int)nUDRows.Value, player2NameTB.Text, "Computer");
+                boardGame = new Board((int) nUDRows.Value, player2NameTB.Text, "Computer");
             }
 
             this.Hide();
             boardGame.ShowDialog();
             this.Close();
         }
+
     }
 }

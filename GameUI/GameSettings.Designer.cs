@@ -48,9 +48,9 @@ namespace GameUI
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label1.Location = new System.Drawing.Point(38, 25);
+            this.label1.Location = new System.Drawing.Point(43, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 20);
+            this.label1.Size = new System.Drawing.Size(83, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Players:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -59,17 +59,18 @@ namespace GameUI
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label2.Location = new System.Drawing.Point(48, 66);
+            this.label2.Location = new System.Drawing.Point(54, 82);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 20);
+            this.label2.Size = new System.Drawing.Size(84, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "Player1:";
             // 
             // player1NameTB
             // 
-            this.player1NameTB.Location = new System.Drawing.Point(160, 66);
+            this.player1NameTB.Location = new System.Drawing.Point(180, 82);
+            this.player1NameTB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.player1NameTB.Name = "player1NameTB";
-            this.player1NameTB.Size = new System.Drawing.Size(100, 22);
+            this.player1NameTB.Size = new System.Drawing.Size(112, 26);
             this.player1NameTB.TabIndex = 0;
             this.player1NameTB.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -77,9 +78,10 @@ namespace GameUI
             // 
             this.player2CB.AutoSize = true;
             this.player2CB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.player2CB.Location = new System.Drawing.Point(52, 96);
+            this.player2CB.Location = new System.Drawing.Point(58, 120);
+            this.player2CB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.player2CB.Name = "player2CB";
-            this.player2CB.Size = new System.Drawing.Size(92, 24);
+            this.player2CB.Size = new System.Drawing.Size(110, 29);
             this.player2CB.TabIndex = 1;
             this.player2CB.Text = "&Player2:";
             this.player2CB.UseVisualStyleBackColor = true;
@@ -88,9 +90,10 @@ namespace GameUI
             // player2NameTB
             // 
             this.player2NameTB.Enabled = false;
-            this.player2NameTB.Location = new System.Drawing.Point(160, 98);
+            this.player2NameTB.Location = new System.Drawing.Point(180, 122);
+            this.player2NameTB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.player2NameTB.Name = "player2NameTB";
-            this.player2NameTB.Size = new System.Drawing.Size(100, 22);
+            this.player2NameTB.Size = new System.Drawing.Size(112, 26);
             this.player2NameTB.TabIndex = 2;
             this.player2NameTB.Text = "[Computer]";
             this.player2NameTB.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
@@ -98,35 +101,36 @@ namespace GameUI
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(49, 163);
+            this.label3.Location = new System.Drawing.Point(55, 204);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 17);
+            this.label3.Size = new System.Drawing.Size(91, 20);
             this.label3.TabIndex = 5;
             this.label3.Text = "Board Size:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(54, 212);
+            this.label4.Location = new System.Drawing.Point(61, 265);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 17);
+            this.label4.Size = new System.Drawing.Size(53, 20);
             this.label4.TabIndex = 6;
             this.label4.Text = "&Rows:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(214, 214);
+            this.label5.Location = new System.Drawing.Point(241, 268);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 17);
+            this.label5.Size = new System.Drawing.Size(44, 20);
             this.label5.TabIndex = 8;
             this.label5.Text = "&Cols:";
             // 
             // StartButton
             // 
-            this.StartButton.Location = new System.Drawing.Point(106, 265);
+            this.StartButton.Location = new System.Drawing.Point(119, 331);
+            this.StartButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.StartButton.Name = "StartButton";
-            this.StartButton.Size = new System.Drawing.Size(154, 23);
+            this.StartButton.Size = new System.Drawing.Size(173, 29);
             this.StartButton.TabIndex = 5;
             this.StartButton.Text = "&Start!";
             this.StartButton.UseVisualStyleBackColor = true;
@@ -134,7 +138,8 @@ namespace GameUI
             // 
             // nUDRows
             // 
-            this.nUDRows.Location = new System.Drawing.Point(118, 216);
+            this.nUDRows.Location = new System.Drawing.Point(133, 270);
+            this.nUDRows.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nUDRows.Maximum = new decimal(new int[] {
             9,
             0,
@@ -146,7 +151,7 @@ namespace GameUI
             0,
             0});
             this.nUDRows.Name = "nUDRows";
-            this.nUDRows.Size = new System.Drawing.Size(47, 22);
+            this.nUDRows.Size = new System.Drawing.Size(53, 26);
             this.nUDRows.TabIndex = 3;
             this.nUDRows.Value = new decimal(new int[] {
             3,
@@ -157,7 +162,8 @@ namespace GameUI
             // 
             // nUDCols
             // 
-            this.nUDCols.Location = new System.Drawing.Point(259, 214);
+            this.nUDCols.Location = new System.Drawing.Point(291, 268);
+            this.nUDCols.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nUDCols.Maximum = new decimal(new int[] {
             9,
             0,
@@ -169,7 +175,7 @@ namespace GameUI
             0,
             0});
             this.nUDCols.Name = "nUDCols";
-            this.nUDCols.Size = new System.Drawing.Size(54, 22);
+            this.nUDCols.Size = new System.Drawing.Size(61, 26);
             this.nUDCols.TabIndex = 4;
             this.nUDCols.Value = new decimal(new int[] {
             3,
@@ -181,9 +187,9 @@ namespace GameUI
             // GameSettings
             // 
             this.AcceptButton = this.StartButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(337, 326);
+            this.ClientSize = new System.Drawing.Size(379, 408);
             this.Controls.Add(this.nUDCols);
             this.Controls.Add(this.nUDRows);
             this.Controls.Add(this.StartButton);
@@ -195,6 +201,7 @@ namespace GameUI
             this.Controls.Add(this.player1NameTB);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "GameSettings";
