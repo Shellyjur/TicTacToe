@@ -69,74 +69,70 @@ namespace TicTacToe
             }
         }
 
-        public bool HumanInputXO(char[,] i_GameMatrix, int i_Size, Player i_HumanPlayer1, Player i_HumanPlayer2)
+        public bool HumanInputXO(char[,] i_GameMatrix, int i_Size, Player i_HumanPlayer1, Player i_HumanPlayer2, int i_Move, int i_Row, int i_Column)
         {
-            int row = 0, column = 0;
             bool quit = false, win = false;
 
-            PrintForward(i_HumanPlayer1.Id, i_HumanPlayer2.Id, ePrintReason.Define);
-            for (int i = 1; i <= (i_Size * i_Size); i++)
-            {
-                if (i % 2 != 0)
+            //PrintForward(i_HumanPlayer1.Id, i_HumanPlayer2.Id, ePrintReason.Define);
+            //for (int i = 1; i <= (i_Size * i_Size); i++)
+            //{
+                if (i_Move % 2 != 0)
                 {
-                    PrintForward(i_HumanPlayer1.Id, string.Empty, ePrintReason.HumanX);
-                    HumanPlayerChoice(i_GameMatrix, i_Size, out row, out column, out quit);
+                    //PrintForward(i_HumanPlayer1.Id, string.Empty, ePrintReason.HumanX);
+                    //HumanPlayerChoice(i_GameMatrix, i_Size, out i_Row, out i_Column, out quit);
                     if (quit == false)
                     {
-                        UpdateMovesOfPlayer(i_HumanPlayer1, row, column);
-                        i_GameMatrix[row, column] = 'X';
+                        UpdateMovesOfPlayer(i_HumanPlayer1, i_Row, i_Column);
+                        i_GameMatrix[i_Row, i_Column] = 'X';
                         i_HumanPlayer1.Move++;
-                        PrintForward(string.Empty, string.Empty, ePrintReason.Clear);
-                        PrintForward(string.Empty, string.Empty, ePrintReason.BoardState);
+                        //PrintForward(string.Empty, string.Empty, ePrintReason.Clear);
+                       // PrintForward(string.Empty, string.Empty, ePrintReason.BoardState);
                         if (i_HumanPlayer1.Move >= i_Size)
                         {
-                            win = CheckSequence(i_HumanPlayer1, i_Size, row, column);
+                            win = CheckSequence(i_HumanPlayer1, i_Size, i_Row, i_Column);
                             if (win == true)
                             {
                                 i_HumanPlayer2.Score++;
-                                PrintForward(i_HumanPlayer2.Id, string.Empty, ePrintReason.Winner);
-                                break;
+                                //PrintForward(i_HumanPlayer2.Id, string.Empty, ePrintReason.Winner);
                             }
                         }
                     }
                     else
                     {
                         i_HumanPlayer2.Score++;
-                        break;
                     }
                 }
                 else
                 {
-                    PrintForward(i_HumanPlayer2.Id, string.Empty, ePrintReason.HumanO);
-                    HumanPlayerChoice(i_GameMatrix, i_Size, out row, out column, out quit);
+                    //PrintForward(i_HumanPlayer2.Id, string.Empty, ePrintReason.HumanO);
+                    //HumanPlayerChoice(i_GameMatrix, i_Size, out i_Row, out i_Column, out quit);
                     if (quit == false)
                     {
-                        UpdateMovesOfPlayer(i_HumanPlayer2, row, column);
-                        i_GameMatrix[row, column] = 'O';
+                        UpdateMovesOfPlayer(i_HumanPlayer2, i_Row, i_Column);
+                        i_GameMatrix[i_Row, i_Column] = 'O';
                         i_HumanPlayer2.Move++;
-                        PrintForward(string.Empty, string.Empty, ePrintReason.Clear);
-                        PrintForward(string.Empty, string.Empty, ePrintReason.BoardState);
+                        //PrintForward(string.Empty, string.Empty, ePrintReason.Clear);
+                        //PrintForward(string.Empty, string.Empty, ePrintReason.BoardState);
                         if (i_HumanPlayer2.Move >= i_Size)
                         {
-                            win = CheckSequence(i_HumanPlayer2, i_Size, row, column);
+                            win = CheckSequence(i_HumanPlayer2, i_Size, i_Row, i_Column);
                             if (win == true)
                             {
                                 i_HumanPlayer1.Score++;
-                                PrintForward(i_HumanPlayer1.Id, string.Empty, ePrintReason.Winner);
+                               //PrintForward(i_HumanPlayer1.Id, string.Empty, ePrintReason.Winner);
                             }
                         }
                     }
                     else
                     {
                         i_HumanPlayer1.Score++;
-                        break;
                     }
                 }
-            }
+            //}
 
             if (win == false && quit != true)
             {
-                PrintForward(string.Empty, string.Empty, ePrintReason.Tie);
+                //PrintForward(string.Empty, string.Empty, ePrintReason.Tie);
             }
 
             return quit;
@@ -147,67 +143,64 @@ namespace TicTacToe
             return ""; //GameUI.GetInput(i_Name1, i_Name2, i_Reason);
         }
 
-        public bool ComputerInputXO(char[,] i_GameMatrix, int i_Size, Player i_ComputerPlayer, Player i_HumanPlayer)
+        public bool ComputerInputXO(char[,] i_GameMatrix, int i_Size, Player i_ComputerPlayer, Player i_HumanPlayer, int i_Move, int i_Row, int i_Column)
         {
-            int row = 0, column = 0;
+           // int row = 0, column = 0;
             bool quit = false, win = false;
 
-            for (int i = 1; i <= (i_Size * i_Size); i++)
-            {
-                if (i % 2 != 0)
+            //for (move = 1; move <= (i_Size * i_Size); move++)
+            //{
+                if (i_Move % 2 != 0)
                 {
-                    if (i > 2)
-                    {
-                        PrintForward(i_ComputerPlayer.Id, string.Empty, ePrintReason.Computer);
-                    }
+                    //if (move > 2)
+                    //{
+                    //    //PrintForward(i_ComputerPlayer.Id, string.Empty, ePrintReason.Computer);
+                    //}
 
-                    PrintForward(i_HumanPlayer.Id, string.Empty, ePrintReason.HumanX);
-                    HumanPlayerChoice(i_GameMatrix, i_Size, out row, out column, out quit);
+                    //PrintForward(i_HumanPlayer.Id, string.Empty, ePrintReason.HumanX);
+                    //HumanPlayerChoice(i_GameMatrix, i_Size, out row, out column, out quit);
                     if (quit == false)
                     {
-                        UpdateMovesOfPlayer(i_HumanPlayer, row, column);
-                        i_GameMatrix[row, column] = 'X';
+                        UpdateMovesOfPlayer(i_HumanPlayer, i_Row, i_Column);
+                        i_GameMatrix[i_Row, i_Column] = 'X';
                         i_HumanPlayer.Move++;
-                        PrintForward(string.Empty, string.Empty, ePrintReason.Clear);
-                        PrintForward(string.Empty, string.Empty, ePrintReason.BoardState);
+                        //PrintForward(string.Empty, string.Empty, ePrintReason.Clear);
+                        //PrintForward(string.Empty, string.Empty, ePrintReason.BoardState);
                         if (i_HumanPlayer.Move >= i_Size)
                         {
-                            win = CheckSequence(i_HumanPlayer, i_Size, row, column);
+                            win = CheckSequence(i_HumanPlayer, i_Size, i_Row, i_Column);
                             if (win == true)
                             {
                                 i_ComputerPlayer.Score++;
-                                PrintForward(i_ComputerPlayer.Id, string.Empty, ePrintReason.Winner);
-                                break;
+                                //PrintForward(i_ComputerPlayer.Id, string.Empty, ePrintReason.Winner);
                             }
                         }
                     }
                     else
                     {
                         i_ComputerPlayer.Score++;
-                        break;
                     }
                 }
                 else
                 {
-                    PrintForward(i_ComputerPlayer.Id, string.Empty, ePrintReason.Computer);
-                    ComputerGeneratedChoice(i_GameMatrix, i_Size, out row, out column);
-                    UpdateMovesOfPlayer(i_ComputerPlayer, row, column);
-                    i_GameMatrix[row, column] = 'O';
+                    //PrintForward(i_ComputerPlayer.Id, string.Empty, ePrintReason.Computer);
+                    ComputerGeneratedChoice(i_GameMatrix, i_Size, out i_Row, out i_Column);
+                    UpdateMovesOfPlayer(i_ComputerPlayer, i_Row, i_Column);
+                    i_GameMatrix[i_Row, i_Column] = 'O';
                     i_ComputerPlayer.Move++;
-                    PrintForward(string.Empty, string.Empty, ePrintReason.Clear);
-                    PrintForward(string.Empty, string.Empty, ePrintReason.BoardState);
+                    //PrintForward(string.Empty, string.Empty, ePrintReason.Clear);
+                    //PrintForward(string.Empty, string.Empty, ePrintReason.BoardState);
                     if (i_ComputerPlayer.Move >= i_Size)
                     {
-                        win = CheckSequence(i_ComputerPlayer, i_Size, row, column);
+                        win = CheckSequence(i_ComputerPlayer, i_Size, i_Row, i_Column);
                         if (win == true)
                         {
                             i_HumanPlayer.Score++;
                             PrintForward(i_HumanPlayer.Id, string.Empty, ePrintReason.HumanX);
-                            break;
                         }
                     }
                 }
-            }
+            //}
 
             if (win == false && quit != true)
             {

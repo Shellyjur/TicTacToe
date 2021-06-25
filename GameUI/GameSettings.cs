@@ -82,13 +82,12 @@ namespace GameUI
 
             if (player2CB.Checked)
             {
-                boardGame = new Board((int) nUDRows.Value, player1NameTB.Text, player2NameTB.Text);
+                boardGame = new Board((int) nUDRows.Value, player1NameTB.Text, player2NameTB.Text,"humanVsHuman");
             }
             else
             {
-                boardGame = new Board((int) nUDRows.Value, player2NameTB.Text, "Computer");
+                boardGame = new Board((int) nUDRows.Value, player1NameTB.Text, "Computer", "humanvsComputer");
             }
-
             this.Hide();
             boardGame.ShowDialog();
             this.Close();
