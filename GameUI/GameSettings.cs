@@ -68,6 +68,7 @@ namespace GameUI
             if (player2CB.Checked)
             {
                 player2NameTB.Enabled = true;
+                player2NameTB.Text = string.Empty;
             }
             else
             {
@@ -88,6 +89,7 @@ namespace GameUI
             {
                 boardGame = new Board((int) nUDRows.Value, player1NameTB.Text, "Computer", "humanvsComputer");
             }
+
             this.Hide();
             boardGame.ShowDialog();
             this.Close();

@@ -95,11 +95,6 @@ namespace GameUI
             cell.Name = i.ToString() + j.ToString();
             cell.Width = ((flowLayoutPanel1.Width - 50) / (m_BoardGame.Size));
             cell.Height = ((flowLayoutPanel1.Height - 50) / (m_BoardGame.Size));
-            //cell.Width = 5;
-            //cell.Height = 5;
-            //cell.Top = j * flowLayoutPanel1.Height;
-            //cell.Left = i * flowLayoutPanel1.Width;
-            //cell.Height = 90;
             cell.Text = "";
             m_ButtonDictionary.Add(i * 10 + j, cell);
             cell.Click += cell_click;
@@ -107,13 +102,8 @@ namespace GameUI
             return cell;
         }
 
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         public void cell_click(object sender, EventArgs e)
-        { ///////////////UPDATE MOVE SOMEWHERE
+        { 
             bool win;
             
             ButtonXO cell = (ButtonXO)sender;
@@ -129,7 +119,6 @@ namespace GameUI
                     m_Move++;
                     if (win)
                     {
-                        //m_Player2.Score++;
                         player2L.Text = m_Player2.Id + ": " + m_Player2.Score;
                         var result = MessageBox.Show("The winner is " + m_Player2.Id + "!\nWould you like to play another round?", "A Win!",
                             MessageBoxButtons.YesNo);
@@ -149,10 +138,8 @@ namespace GameUI
                         if (result == DialogResult.No)
                         {
                             this.Close();
-                            //this.ParentForm.Close();
                         }
                     }
-
                     else if(m_Move != (m_BoardGame.Size * m_BoardGame.Size))
                     {
                         m_TicTacToeLogic.ComputerInputXO(m_BoardGame.GameMatrix, m_BoardGame.Size, m_Player2, m_Player1, m_Move, cell.x, cell.y, out i, out j, out win);
@@ -164,7 +151,6 @@ namespace GameUI
                         m_ButtonDictionary[i * 10 + j].Text = "O";
                         if (win)
                         {
-                           // m_Player1.Score++;
                             player1L.Text = m_Player1.Id + ": " + m_Player1.Score;
                             var result = MessageBox.Show("The winner is " + m_Player1.Id + "!\nWould you like to play another round?", "A Win!",
                                 MessageBoxButtons.YesNo);
@@ -206,7 +192,6 @@ namespace GameUI
                         if (result == DialogResult.No)
                         {
                             this.Close();
-                            //this.ParentForm.Close();
                         }
                     }
                     
@@ -217,7 +202,6 @@ namespace GameUI
                     cell.Text = m_BoardGame.GameMatrix[cell.x, cell.y].ToString();
                     if (win && m_Move % 2 == 1)
                     {
-                        //m_Player2.Score++;
                         player2L.Text = m_Player2.Id + ": " + m_Player2.Score;
                         var result = MessageBox.Show("The winner is " + m_Player2.Id + "!\nWould you like to play another round?", "A Win!",
                             MessageBoxButtons.YesNo);
@@ -236,12 +220,10 @@ namespace GameUI
                         if (result == DialogResult.No)
                         {
                             this.Close();
-                            //this.ParentForm.Close();
                         }
                     }
                     else if (win)
                     {
-                      //  m_Player1.Score++;
                         player1L.Text = m_Player1.Id + ": " + m_Player1.Score;
                         var result = MessageBox.Show("The winner is " + m_Player1.Id + "!\nWould you like to play another round?", "A Win!",
                             MessageBoxButtons.YesNo);
@@ -260,11 +242,10 @@ namespace GameUI
                         if (result == DialogResult.No)
                         {
                             this.Close();
-                            //this.ParentForm.Close();
                         }
 
                     }
-                    //MessageBox.Show()
+                    
                     if (m_Move == (m_BoardGame.Size * m_BoardGame.Size))
                     {
                         var result = MessageBox.Show("Tie!\nWould you like to play another round?", "A Tie!",
@@ -284,21 +265,10 @@ namespace GameUI
                         if (result == DialogResult.No)
                         {
                             this.Close();
-                            //this.ParentForm.Close();
                         }
                     }
                 }
-
-                //cell.Text = m_BoardGame.GameMatrix[cell.x, cell.y].ToString();
             }
-
-            //MessageBox.Show(cell.Name.ToString());
-            
         }
-
-        //private void player1L_Click(object sender, EventArgs e)
-        //{
-
-        //}
     }
 }
