@@ -39,7 +39,6 @@
     <Compile Include="ePrintReason.cs" />
     <Compile Include="GameLogic.cs" />
     <Compile Include="Player.cs" />
-    <Compile Include="privetPlayer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
