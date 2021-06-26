@@ -36,38 +36,40 @@ namespace GameUI
             // player1L
             // 
             this.player1L.AutoSize = true;
-            this.player1L.Location = new System.Drawing.Point(197, 678);
+            this.player1L.Location = new System.Drawing.Point(222, 848);
             this.player1L.Name = "player1L";
-            this.player1L.Size = new System.Drawing.Size(75, 17);
+            this.player1L.Size = new System.Drawing.Size(83, 20);
             this.player1L.TabIndex = 0;
             this.player1L.Text = "m_Player1";
             // 
             // player2L
             // 
             this.player2L.AutoSize = true;
-            this.player2L.Location = new System.Drawing.Point(438, 678);
+            this.player2L.Location = new System.Drawing.Point(493, 848);
             this.player2L.Name = "player2L";
-            this.player2L.Size = new System.Drawing.Size(75, 17);
+            this.player2L.Size = new System.Drawing.Size(83, 20);
             this.player2L.TabIndex = 1;
             this.player2L.Text = "m_Player2";
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(95, 37);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(107, 46);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(600, 600);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(675, 750);
             this.flowLayoutPanel1.TabIndex = 2;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // Board
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 753);
+            this.ClientSize = new System.Drawing.Size(880, 941);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.player2L);
             this.Controls.Add(this.player1L);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Board";

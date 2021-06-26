@@ -69,10 +69,11 @@ namespace TicTacToe
             }
         }
 
-        public bool HumanInputXO(char[,] i_GameMatrix, int i_Size, Player i_HumanPlayer1, Player i_HumanPlayer2, int i_Move, int i_Row, int i_Column)
+        public bool HumanInputXO(char[,] i_GameMatrix, int i_Size, Player i_HumanPlayer1, Player i_HumanPlayer2, int i_Move, int i_Row, int i_Column, out bool o_Win)
         {
-            bool quit = false, win = false;
-
+            bool quit = false; 
+            
+            o_Win = false;
             //PrintForward(i_HumanPlayer1.Id, i_HumanPlayer2.Id, ePrintReason.Define);
             //for (int i = 1; i <= (i_Size * i_Size); i++)
             //{
@@ -89,8 +90,8 @@ namespace TicTacToe
                        // PrintForward(string.Empty, string.Empty, ePrintReason.BoardState);
                         if (i_HumanPlayer1.Move >= i_Size)
                         {
-                            win = CheckSequence(i_HumanPlayer1, i_Size, i_Row, i_Column);
-                            if (win == true)
+                            o_Win = CheckSequence(i_HumanPlayer1, i_Size, i_Row, i_Column);
+                            if (o_Win == true)
                             {
                                 i_HumanPlayer2.Score++;
                                 //PrintForward(i_HumanPlayer2.Id, string.Empty, ePrintReason.Winner);
@@ -115,8 +116,8 @@ namespace TicTacToe
                         //PrintForward(string.Empty, string.Empty, ePrintReason.BoardState);
                         if (i_HumanPlayer2.Move >= i_Size)
                         {
-                            win = CheckSequence(i_HumanPlayer2, i_Size, i_Row, i_Column);
-                            if (win == true)
+                            o_Win = CheckSequence(i_HumanPlayer2, i_Size, i_Row, i_Column);
+                            if (o_Win == true)
                             {
                                 i_HumanPlayer1.Score++;
                                //PrintForward(i_HumanPlayer1.Id, string.Empty, ePrintReason.Winner);
@@ -130,7 +131,7 @@ namespace TicTacToe
                 }
             //}
 
-            if (win == false && quit != true)
+            if (o_Win == false && quit != true)
             {
                 //PrintForward(string.Empty, string.Empty, ePrintReason.Tie);
             }
@@ -143,10 +144,14 @@ namespace TicTacToe
             return ""; //GameUI.GetInput(i_Name1, i_Name2, i_Reason);
         }
 
-        public bool ComputerInputXO(char[,] i_GameMatrix, int i_Size, Player i_ComputerPlayer, Player i_HumanPlayer, int i_Move, int i_Row, int i_Column)
+        public bool ComputerInputXO(char[,] i_GameMatrix, int i_Size, Player i_ComputerPlayer, Player i_HumanPlayer,
+            int i_Move, int i_Row, int i_Column, out int o_I, out int o_J, out bool o_win)
         {
            // int row = 0, column = 0;
-            bool quit = false, win = false;
+           bool quit = false;
+           o_win = false;
+           o_I = 0;
+           o_J = 0;
 
             //for (move = 1; move <= (i_Size * i_Size); move++)
             //{
@@ -168,8 +173,8 @@ namespace TicTacToe
                         //PrintForward(string.Empty, string.Empty, ePrintReason.BoardState);
                         if (i_HumanPlayer.Move >= i_Size)
                         {
-                            win = CheckSequence(i_HumanPlayer, i_Size, i_Row, i_Column);
-                            if (win == true)
+                            o_win = CheckSequence(i_HumanPlayer, i_Size, i_Row, i_Column);
+                            if (o_win == true)
                             {
                                 i_ComputerPlayer.Score++;
                                 //PrintForward(i_ComputerPlayer.Id, string.Empty, ePrintReason.Winner);
@@ -185,6 +190,8 @@ namespace TicTacToe
                 {
                     //PrintForward(i_ComputerPlayer.Id, string.Empty, ePrintReason.Computer);
                     ComputerGeneratedChoice(i_GameMatrix, i_Size, out i_Row, out i_Column);
+                    o_I = i_Row;
+                    o_J = i_Column;
                     UpdateMovesOfPlayer(i_ComputerPlayer, i_Row, i_Column);
                     i_GameMatrix[i_Row, i_Column] = 'O';
                     i_ComputerPlayer.Move++;
@@ -192,8 +199,8 @@ namespace TicTacToe
                     //PrintForward(string.Empty, string.Empty, ePrintReason.BoardState);
                     if (i_ComputerPlayer.Move >= i_Size)
                     {
-                        win = CheckSequence(i_ComputerPlayer, i_Size, i_Row, i_Column);
-                        if (win == true)
+                        o_win = CheckSequence(i_ComputerPlayer, i_Size, i_Row, i_Column);
+                        if (o_win == true)
                         {
                             i_HumanPlayer.Score++;
                             PrintForward(i_HumanPlayer.Id, string.Empty, ePrintReason.HumanX);
@@ -202,7 +209,7 @@ namespace TicTacToe
                 }
             //}
 
-            if (win == false && quit != true)
+            if (o_win == false && quit != true)
             {
                 PrintForward(string.Empty, string.Empty, ePrintReason.Tie);
             }
