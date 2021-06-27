@@ -28,3 +28,9 @@ C:\Users\97254\GitProjects\TicTacToeUINew\TicTacToe\obj\Debug\TicTacToe.csprojAs
 C:\Users\97254\GitProjects\TicTacToeUINew\TicTacToe\obj\Debug\TicTacToe.csproj.CoreCompileInputs.cache
 C:\Users\97254\GitProjects\TicTacToeUINew\TicTacToe\obj\Debug\TicTacToe.dll
 C:\Users\97254\GitProjects\TicTacToeUINew\TicTacToe\obj\Debug\TicTacToe.pdb
+C:\Users\zurbinsky\github-repos\tictactoe27\TicTacToe\bin\Debug\TicTacToe.dll
+C:\Users\zurbinsky\github-repos\tictactoe27\TicTacToe\bin\Debug\TicTacToe.pdb
+C:\Users\zurbinsky\github-repos\tictactoe27\TicTacToe\obj\Debug\TicTacToe.csprojAssemblyReference.cache
+C:\Users\zurbinsky\github-repos\tictactoe27\TicTacToe\obj\Debug\TicTacToe.csproj.CoreCompileInputs.cache
+C:\Users\zurbinsky\github-repos\tictactoe27\TicTacToe\obj\Debug\TicTacToe.dll
+C:\Users\zurbinsky\github-repos\tictactoe27\TicTacToe\obj\Debug\TicTacToe.pdb

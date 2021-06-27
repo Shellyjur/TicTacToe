@@ -15,42 +15,12 @@ namespace GameUI
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             if (player2CB.Checked)
             {
                 player2NameTB.Enabled = true;
             }
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void nUDRows_ValueChanged(object sender, EventArgs e)
@@ -83,17 +53,16 @@ namespace GameUI
 
             if (player2CB.Checked)
             {
-                boardGame = new Board((int) nUDRows.Value, player1NameTB.Text, player2NameTB.Text,"humanVsHuman");
+                boardGame = new Board((int)nUDRows.Value, player1NameTB.Text, player2NameTB.Text, "humanVsHuman");
             }
             else
             {
-                boardGame = new Board((int) nUDRows.Value, player1NameTB.Text, "Computer", "humanvsComputer");
+                boardGame = new Board((int)nUDRows.Value, player1NameTB.Text, "Computer", "humanvsComputer");
             }
 
             this.Hide();
             boardGame.ShowDialog();
             this.Close();
         }
-
     }
 }

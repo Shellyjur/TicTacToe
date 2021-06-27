@@ -1,7 +1,6 @@
-﻿
-namespace GameUI
+﻿namespace GameUI
 {
-    partial class GameSettings
+    public partial class GameSettings
     {
         /// <summary>
         /// Required designer variable.
@@ -18,6 +17,7 @@ namespace GameUI
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -53,7 +53,7 @@ namespace GameUI
             this.label1.Size = new System.Drawing.Size(83, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Players:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            //this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -72,7 +72,7 @@ namespace GameUI
             this.player1NameTB.Name = "player1NameTB";
             this.player1NameTB.Size = new System.Drawing.Size(112, 26);
             this.player1NameTB.TabIndex = 0;
-            this.player1NameTB.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            //this.player1NameTB.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // player2CB
             // 
@@ -209,7 +209,7 @@ namespace GameUI
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Game Settings:";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            //this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nUDRows)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDCols)).EndInit();
             this.ResumeLayout(false);
@@ -232,4 +232,3 @@ namespace GameUI
         private System.Windows.Forms.NumericUpDown nUDCols;
     }
 }
-

@@ -49,14 +49,14 @@ namespace GameUI
             }
         }
 
-        public GameLogic m_TicTacToeLogic; 
-        private BoardGame m_BoardGame;
-        //private privetPlayer m_Player1;
-        private Player m_Player1;
-        private Player m_Player2;
+        private readonly BoardGame r_BoardGame;
+        private readonly Player r_Player1;
+        private readonly Player r_Player2;
+        private readonly string r_GameTypeFlag;
+        private readonly Dictionary<int, ButtonXO> r_ButtonDictionary;
+        public GameLogic m_TicTacToeLogic;
         private int m_Move;
-        private string m_GameTypeFlag;
-        private Dictionary<int, ButtonXO> m_ButtonDictionary;
+        
         public Board()
         {
             InitializeComponent();
@@ -66,37 +66,36 @@ namespace GameUI
         {
             InitializeComponent();
             m_TicTacToeLogic = new GameLogic();
-            m_BoardGame = new BoardGame(i_BoardSize);
-            m_Player1 = new Player(i_Player1Id, i_BoardSize);
-            m_Player2 = new Player(i_Player2Id, i_BoardSize);
-            m_GameTypeFlag = i_GameTypeFlag;
+            r_BoardGame = new BoardGame(i_BoardSize);
+            r_Player1 = new Player(i_Player1Id, i_BoardSize);
+            r_Player2 = new Player(i_Player2Id, i_BoardSize);
+            r_GameTypeFlag = i_GameTypeFlag;
             m_Move = 0;
-            m_ButtonDictionary = new Dictionary<int, ButtonXO>();
+            r_ButtonDictionary = new Dictionary<int, ButtonXO>();
         } 
 
         private void Board_Load(object sender, EventArgs e)
         {
-        
-           
-            for (int i = 1 ; i <= m_BoardGame.Size ; i++)
+            for (int i = 1 ; i <= r_BoardGame.Size ; i++)
             {
-                for(int j = 1 ; j <= m_BoardGame.Size; j++)
+                for(int j = 1 ; j <= r_BoardGame.Size ; j++)
                 {
                     flowLayoutPanel1.Controls.Add(CreateCells(i, j));
                 }
             }
-            player1L.Text = m_Player1.Id + ": " + m_Player1.Score;
-            player2L.Text = m_Player2.Id + ": " + m_Player2.Score;
+
+            player1L.Text = r_Player1.Id + ": " + r_Player1.Score;
+            player2L.Text = r_Player2.Id + ": " + r_Player2.Score;
         }
 
-        public Button CreateCells(int i , int j)
+        public Button CreateCells(int i, int j)
         {
             ButtonXO cell = new ButtonXO(i, j);
             cell.Name = i.ToString() + j.ToString();
-            cell.Width = ((flowLayoutPanel1.Width - 50) / (m_BoardGame.Size));
-            cell.Height = ((flowLayoutPanel1.Height - 50) / (m_BoardGame.Size));
-            cell.Text = "";
-            m_ButtonDictionary.Add(i * 10 + j, cell);
+            cell.Width = (flowLayoutPanel1.Width - 50) / r_BoardGame.Size;
+            cell.Height = (flowLayoutPanel1.Height - 50) / r_BoardGame.Size;
+            cell.Text = string.Empty;
+            r_ButtonDictionary.Add((i * 10) + j, cell);
             cell.Click += cell_click;
             
             return cell;
@@ -107,32 +106,25 @@ namespace GameUI
             bool win;
             
             ButtonXO cell = (ButtonXO)sender;
-            if (cell.Text == "")
+            if (cell.Text == string.Empty)
             {
                 m_Move++;
-                if (m_GameTypeFlag == "humanvsComputer")
+                if (r_GameTypeFlag == "humanvsComputer")
                 {
                     int i, j;
 
-                    m_TicTacToeLogic.ComputerInputXO(m_BoardGame.GameMatrix, m_BoardGame.Size, m_Player2, m_Player1, m_Move, cell.x, cell.y, out i, out j, out win);
-                    cell.Text = m_BoardGame.GameMatrix[cell.x, cell.y].ToString();
+                    m_TicTacToeLogic.ComputerInputXO(r_BoardGame.GameMatrix, r_BoardGame.Size,
+                                     r_Player2, r_Player1, m_Move, cell.x, cell.y, out i, out j, out win);
+                    cell.Text = r_BoardGame.GameMatrix[cell.x, cell.y].ToString();
                     m_Move++;
                     if (win)
                     {
-                        player2L.Text = m_Player2.Id + ": " + m_Player2.Score;
-                        var result = MessageBox.Show("The winner is " + m_Player2.Id + "!\nWould you like to play another round?", "A Win!",
-                            MessageBoxButtons.YesNo);
+                        player2L.Text = r_Player2.Id + ": " + r_Player2.Score;
+                        var result = MessageBox.Show("The winner is " + r_Player2.Id + "!\nWould you like to play another round?", "A Win!",
+                                                MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                            m_BoardGame.ClearGameBoard();
-                            m_Player1.InitializeCounter();
-                            m_Player2.InitializeCounter();
-                            foreach (KeyValuePair<int, ButtonXO> button in m_ButtonDictionary)
-                            {
-                                button.Value.Text = "";
-                            }
-
-                            m_Move = 0;
+                            RestartGame();
                         }
 
                         if (result == DialogResult.No)
@@ -140,53 +132,40 @@ namespace GameUI
                             this.Close();
                         }
                     }
-                    else if(m_Move != (m_BoardGame.Size * m_BoardGame.Size))
+                    else if(m_Move != (r_BoardGame.Size * r_BoardGame.Size))
                     {
-                        m_TicTacToeLogic.ComputerInputXO(m_BoardGame.GameMatrix, m_BoardGame.Size, m_Player2, m_Player1, m_Move, cell.x, cell.y, out i, out j, out win);
-                        while (m_ButtonDictionary[i * 10 + j].Text != "")
+                        m_TicTacToeLogic.ComputerInputXO(r_BoardGame.GameMatrix, r_BoardGame.Size,
+                                         r_Player2, r_Player1, m_Move, cell.x, cell.y, out i, out j, out win);
+                        while (r_ButtonDictionary[(i * 10) + j].Text != string.Empty)
                         {
-                            m_TicTacToeLogic.ComputerInputXO(m_BoardGame.GameMatrix, m_BoardGame.Size, m_Player2, m_Player1, m_Move, cell.x, cell.y, out i, out j, out win);
+                            m_TicTacToeLogic.ComputerInputXO(r_BoardGame.GameMatrix, r_BoardGame.Size,
+                                             r_Player2, r_Player1, m_Move, cell.x, cell.y, out i, out j, out win);
                         }
 
-                        m_ButtonDictionary[i * 10 + j].Text = "O";
+                        r_ButtonDictionary[(i * 10) + j].Text = "O";
                         if (win)
                         {
-                            player1L.Text = m_Player1.Id + ": " + m_Player1.Score;
-                            var result = MessageBox.Show("The winner is " + m_Player1.Id + "!\nWould you like to play another round?", "A Win!",
-                                MessageBoxButtons.YesNo);
+                            player1L.Text = r_Player1.Id + ": " + r_Player1.Score;
+                            var result = MessageBox.Show("The winner is " + r_Player1.Id + "!\nWould you like to play another round?", "A Win!",
+                                                    MessageBoxButtons.YesNo);
                             if (result == DialogResult.Yes)
                             {
-                                m_BoardGame.ClearGameBoard();
-                                m_Player1.InitializeCounter();
-                                m_Player2.InitializeCounter();
-                                foreach (KeyValuePair<int, ButtonXO> button in m_ButtonDictionary)
-                                {
-                                    button.Value.Text = "";
-                                }
-                                m_Move = 0;
+                                RestartGame();
                             }
 
                             if (result == DialogResult.No)
                             {
                                 this.Close();
-                                //this.ParentForm.Close();
                             }
                         }
                     }
                     else
                     {
                         var result = MessageBox.Show("Tie!\nWould you like to play another round?", "A Tie!",
-                            MessageBoxButtons.YesNo);
+                                                MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                            m_BoardGame.ClearGameBoard();
-                            m_Player1.InitializeCounter();
-                            m_Player2.InitializeCounter();
-                            foreach (KeyValuePair<int, ButtonXO> button in m_ButtonDictionary)
-                            {
-                                button.Value.Text = "";
-                            }
-                            m_Move = 0;
+                            RestartGame();
                         }
 
                         if (result == DialogResult.No)
@@ -194,27 +173,19 @@ namespace GameUI
                             this.Close();
                         }
                     }
-                    
                 }
                 else
                 {
-                    m_TicTacToeLogic.HumanInputXO(m_BoardGame.GameMatrix, m_BoardGame.Size, m_Player1, m_Player2, m_Move, cell.x, cell.y, out win);
-                    cell.Text = m_BoardGame.GameMatrix[cell.x, cell.y].ToString();
+                    m_TicTacToeLogic.HumanInputXO(r_BoardGame.GameMatrix, r_BoardGame.Size, r_Player1, r_Player2, m_Move, cell.x, cell.y, out win);
+                    cell.Text = r_BoardGame.GameMatrix[cell.x, cell.y].ToString();
                     if (win && m_Move % 2 == 1)
                     {
-                        player2L.Text = m_Player2.Id + ": " + m_Player2.Score;
-                        var result = MessageBox.Show("The winner is " + m_Player2.Id + "!\nWould you like to play another round?", "A Win!",
-                            MessageBoxButtons.YesNo);
+                        player2L.Text = r_Player2.Id + ": " + r_Player2.Score;
+                        var result = MessageBox.Show("The winner is " + r_Player2.Id + "!\nWould you like to play another round?", "A Win!",
+                                                MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                            m_BoardGame.ClearGameBoard();
-                            m_Player1.InitializeCounter();
-                            m_Player2.InitializeCounter();
-                            foreach (KeyValuePair<int, ButtonXO> button in m_ButtonDictionary)
-                            {
-                                button.Value.Text = "";
-                            }
-                            m_Move = 0;
+                            RestartGame();
                         }
 
                         if (result == DialogResult.No)
@@ -224,42 +195,27 @@ namespace GameUI
                     }
                     else if (win)
                     {
-                        player1L.Text = m_Player1.Id + ": " + m_Player1.Score;
-                        var result = MessageBox.Show("The winner is " + m_Player1.Id + "!\nWould you like to play another round?", "A Win!",
-                            MessageBoxButtons.YesNo);
+                        player1L.Text = r_Player1.Id + ": " + r_Player1.Score;
+                        var result = MessageBox.Show("The winner is " + r_Player1.Id + "!\nWould you like to play another round?", "A Win!",
+                                                MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                            m_BoardGame.ClearGameBoard();
-                            m_Player1.InitializeCounter();
-                            m_Player2.InitializeCounter();
-                            foreach (KeyValuePair<int, ButtonXO> button in m_ButtonDictionary)
-                            {
-                                button.Value.Text = "";
-                            }
-                            m_Move = 0;
+                            RestartGame();
                         }
 
                         if (result == DialogResult.No)
                         {
                             this.Close();
                         }
-
                     }
-                    
-                    if (m_Move == (m_BoardGame.Size * m_BoardGame.Size))
+
+                    if (m_Move == (r_BoardGame.Size * r_BoardGame.Size))
                     {
                         var result = MessageBox.Show("Tie!\nWould you like to play another round?", "A Tie!",
-                            MessageBoxButtons.YesNo);
+                                                MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                            m_BoardGame.ClearGameBoard();
-                            m_Player1.InitializeCounter();
-                            m_Player2.InitializeCounter();
-                            foreach (KeyValuePair<int, ButtonXO> button in m_ButtonDictionary)
-                            {
-                                button.Value.Text = "";
-                            }
-                            m_Move = 0;
+                            RestartGame();
                         }
 
                         if (result == DialogResult.No)
@@ -269,6 +225,19 @@ namespace GameUI
                     }
                 }
             }
+        }
+
+        public void RestartGame()
+        {
+            r_BoardGame.ClearGameBoard();
+            r_Player1.InitializeCounter();
+            r_Player2.InitializeCounter();
+            foreach (KeyValuePair<int, ButtonXO> button in r_ButtonDictionary)
+            {
+                button.Value.Text = string.Empty;
+            }
+
+            m_Move = 0;
         }
     }
 }

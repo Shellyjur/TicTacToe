@@ -6,9 +6,10 @@ namespace TicTacToe
 {
     public class GameLogic
     { 
-        Random m_RandomMove = new Random();
+        private readonly Random m_RandomMove = new Random();
 
-        public void HumanInputXO(char[,] i_GameMatrix, int i_Size, Player i_HumanPlayer1, Player i_HumanPlayer2, int i_Move, int i_Row, int i_Column, out bool o_Win)
+        public void HumanInputXO(char[,] i_GameMatrix, int i_Size, Player i_HumanPlayer1, Player i_HumanPlayer2,
+                    int i_Move, int i_Row, int i_Column, out bool o_Win)
         {
             o_Win = false;
             if (i_Move % 2 != 0)
@@ -23,8 +24,7 @@ namespace TicTacToe
                     { 
                         i_HumanPlayer2.Score++;
                     }
-                }
-                   
+                }      
             }
             else
             {
@@ -43,12 +43,11 @@ namespace TicTacToe
         }
 
         public void ComputerInputXO(char[,] i_GameMatrix, int i_Size, Player i_ComputerPlayer, Player i_HumanPlayer,
-            int i_Move, int i_Row, int i_Column, out int o_I, out int o_J, out bool o_win)
+                    int i_Move, int i_Row, int i_Column, out int o_I, out int o_J, out bool o_win)
         {
-            o_win = false;
+           o_win = false;
            o_I = 0;
            o_J = 0;
-
            if (i_Move % 2 != 0)
            {
                UpdateMovesOfPlayer(i_HumanPlayer, i_Row, i_Column); 
@@ -86,9 +85,8 @@ namespace TicTacToe
         {
             io_Row = 0;
             io_Column = 0;
-            io_Row =m_RandomMove.Next(1, i_Size + 1);
+            io_Row = m_RandomMove.Next(1, i_Size + 1);
             io_Column = m_RandomMove.Next(1, i_Size + 1);
-
             while (i_GameMatrix[io_Row, io_Column] != '\0' && i_GameMatrix[io_Row, io_Column] != '0')
             {
                 io_Row = m_RandomMove.Next(1, i_Size + 1);

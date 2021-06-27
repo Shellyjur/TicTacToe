@@ -1,7 +1,6 @@
-﻿
-namespace GameUI
+﻿namespace GameUI
 {
-    partial class Board
+    public partial class Board
     {
         /// <summary>
         /// Required designer variable.
@@ -18,6 +17,7 @@ namespace GameUI
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
         #region Windows Form Designer generated code
