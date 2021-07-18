@@ -1,2 +1,2 @@
 # TicTacToe
-Tic Tac Toe game with UI
+Reversed Tic Tac Toe game with UI
